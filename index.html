@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tudo em Um | Sistema de gestão de clientes no Notion</title>
+<meta name="description" content="Organize clientes, reuniões, entregas, prazos e tarefas em um único painel profissional no Notion. Template personalizável, página do cliente inclusa e tutoriais gravados.">
+<meta name="theme-color" content="#0A4D57">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tudo em Um | Sistema de gestão de clientes no Notion">
+<meta property="og:description" content="Transforme a entrega do seu serviço em uma experiência 5 estrelas.">
+<meta property="og:image" content="img/mockup.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A4D57'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='%23F4B448'%3ET%3C/text%3E%3C/svg%3E">
+<style>
+:root { color-scheme: light; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Gochi+Hand&display=swap">
+<style>
+/* Layout: faixa azul-petróleo (a mesma do mockup) com a headline, mockup sobreposto flutuando, faixa inclinada em movimento, resumo do que a pessoa leva, prints em abas, e seções em ritmo alternado (off-white / areia). Amarelo para ação, terracota só nos detalhes manuscritos. */
+:root {
+  --bg: #F7F4ED;
+  --bg-alt: #EDE4D3;
+  --surface: #FFFFFF;
+  --ink: #16282B;
+  --muted: #50666A;
+  --line: #DAD9CD;
+  --accent: #0E6671;
+  --accent-soft: #D5E8E9;
+  --on-accent: #FFFFFF;
+  --warm: #B4552E;
+  --btn-bg: #F4B448;
+  --btn-fg: #1B2A2C;
+  --sand: #D9BFA3;
+  --stage: #FFFFFF;
+  --grad: linear-gradient(135deg, #0A4D57 0%, #138590 100%);
+  --on-hero: #FFFFFF;
+  --on-hero-soft: rgba(255,255,255,.86);
+  --btn-light-bg: #F4B448;
+  --btn-light-fg: #1B2A2C;
+  --shadow: 0 30px 60px -24px rgba(10,60,68,.45);
+  --display: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --body: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --hand: "Gochi Hand", "Segoe Print", "Bradley Hand", cursive;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1B1D; --bg-alt: #112427; --surface: #172C2F; --ink: #EAF2F1; --muted: #A5BDBC;
+    --line: #29413F; --accent: #5FCBD3; --accent-soft: #17383B; --on-accent: #0D1B1D; --warm: #EE9A6D;
+    --btn-bg: #F4B448; --btn-fg: #1A1F20; --sand: #8F735A;
+    --grad: linear-gradient(135deg, #083D45 0%, #0F6D78 100%);
+    --shadow: 0 30px 60px -24px rgba(0,0,0,.65);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1B1D; --bg-alt: #112427; --surface: #172C2F; --ink: #EAF2F1; --muted: #A5BDBC;
+  --line: #29413F; --accent: #5FCBD3; --accent-soft: #17383B; --on-accent: #0D1B1D; --warm: #EE9A6D;
+  --btn-bg: #F4B448; --btn-fg: #1A1F20; --sand: #8F735A;
+  --grad: linear-gradient(135deg, #083D45 0%, #0F6D78 100%);
+  --shadow: 0 30px 60px -24px rgba(0,0,0,.65);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 400 16.5px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+img { display: block; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+section[id] { scroll-margin-top: 72px; }
+
+.wrap { width: 100%; max-width: 1120px; margin-left: auto; margin-right: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.section { padding-block: clamp(56px, 8vw, 104px); }
+.section--alt { background: var(--bg-alt); }
+.eyebrow { font: 400 clamp(21px, 2.4vw, 26px)/1.2 var(--hand); color: var(--warm); margin-bottom: 10px; }
+.h2 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.16; max-width: 24ch; }
+.center { text-align: center; }
+.section > .wrap > .eyebrow, .section > .wrap > .h2 { text-align: center; margin-left: auto; margin-right: auto; }
+.center .h2 { margin-left: auto; margin-right: auto; }
+
+/* Animações */
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes float { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+@keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(40px, 30px) scale(1.12); } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes marquee { to { transform: translateX(-100%); } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(244,180,72,.55); } 70%, 100% { box-shadow: 0 0 0 18px rgba(244,180,72,0); } }
+.js .reveal { opacity: 0; }
+.js .reveal.in { opacity: 1; animation: rise .75s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) backwards; }
+
+/* Botões */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 34px;
+  font: 700 14px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; text-decoration: none;
+  background: var(--btn-bg); color: var(--btn-fg); border-radius: 999px; transition: transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -10px rgba(8,50,58,.5); }
+.btn--light { background: var(--btn-light-bg); color: var(--btn-light-fg); }
+.btn--block { display: flex; width: 100%; }
+.btn--pulse { animation: pulse 2.6s ease-out infinite; }
+.btn--pulse:hover { animation: none; }
+
+/* Menu fixo e progresso */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 40; display: none; background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0px); transform: translateY(-110%); transition: transform .3s ease; }
+@supports (background: color-mix(in srgb, red 50%, blue)) { .nav { background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: saturate(1.4) blur(12px); } }
+.nav.on { transform: none; }
+.nav-in { display: flex; align-items: center; gap: 28px; min-height: 64px; }
+.nav .mark { color: var(--accent); text-decoration: none; }
+.nav ul { display: flex; gap: 26px; margin-left: auto; }
+.nav .link { display: block; font: 600 13px/1 var(--display); letter-spacing: .05em; text-decoration: none; color: var(--muted); padding: 10px 2px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+.nav .link:hover, .nav .link.act { color: var(--ink); border-color: var(--btn-bg); }
+.nav .btn { min-height: 42px; padding: 0 22px; font-size: 12px; }
+@media (min-width: 960px) { .nav { display: block; } }
+.progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 3px; z-index: 41; pointer-events: none; }
+.progress i { display: block; height: 100%; background: var(--btn-bg); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; background: var(--grad); color: var(--on-hero); padding-top: 22px; padding-bottom: clamp(150px, 19vw, 250px); }
+.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; animation: drift 14s ease-in-out infinite alternate; }
+.hero::before { width: 420px; height: 420px; left: -140px; top: -120px; background: #F4B448; opacity: .2; }
+.hero::after { width: 540px; height: 540px; right: -180px; bottom: -80px; background: #5FD0D8; opacity: .28; animation-delay: -6s; }
+.hero .wrap { position: relative; z-index: 1; text-align: center; }
+.hero [style*="--i"] { animation: rise .85s cubic-bezier(.2,.7,.2,1) calc(var(--i) * 90ms) backwards; }
+.topbar { display: flex; align-items: baseline; justify-content: center; gap: 12px; margin-bottom: clamp(36px, 6vw, 72px); }
+.mark { font: 800 20px/1 var(--display); letter-spacing: .26em; }
+.mark-sub { font: 400 22px/1 var(--hand); color: var(--on-hero-soft); }
+.hero .eyebrow { color: var(--btn-light-bg); }
+.hero h1 { font-size: clamp(30px, 4.8vw, 54px); line-height: 1.1; max-width: 20ch; font-weight: 800; margin-left: auto; margin-right: auto; }
+.hl { position: relative; display: inline-block; white-space: nowrap; }
+.hl svg { position: absolute; left: -2%; bottom: -.3em; width: 104%; height: .42em; overflow: visible; }
+.hl path { stroke: var(--btn-light-bg); stroke-width: 5; fill: none; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 1.1s .9s ease forwards; }
+.hero .lead { font-size: clamp(17px, 1.9vw, 21px); line-height: 1.5; max-width: 38ch; font-weight: 400; margin: 22px auto 0; color: var(--on-hero-soft); }
+.cta-block { margin-top: 34px; }
+.teaser { margin-top: 16px; font-size: 15px; color: var(--on-hero-soft); }
+.teaser b { color: var(--on-hero); font-weight: 700; }
+.strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin-top: 30px; font: 600 11.5px/1.3 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--on-hero-soft); }
+.strip li { display: flex; align-items: center; gap: 10px; }
+.strip li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
+.strip strong { color: var(--on-hero); font-weight: 600; }
+.peek { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 26px; font: 400 clamp(20px, 2.2vw, 24px)/1 var(--hand); color: var(--btn-light-bg); }
+.peek svg { width: 44px; height: 52px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+.stage-wrap { margin-top: calc(-1 * clamp(84px, 11vw, 150px)); position: relative; }
+.stage { background: var(--stage); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; animation: float 7s ease-in-out infinite alternate; }
+.stage img { width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+/* Faixa em movimento */
+.ticker-wrap { overflow: hidden; padding-block: clamp(48px, 6vw, 80px) clamp(8px, 2vw, 24px); }
+.ticker { width: 100%; background: var(--grad); color: var(--on-hero); display: flex; overflow: hidden; white-space: nowrap; padding-block: 17px; box-shadow: var(--shadow); }
+.ticker ul { display: flex; flex: none; animation: marquee 34s linear infinite; }
+.ticker li { display: flex; align-items: center; font: 700 14px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; }
+.ticker li::after { content: "\2726"; color: var(--btn-light-bg); padding: 0 34px; }
+
+/* O que você leva */
+.benefits { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 20px; margin-top: clamp(32px, 4vw, 52px); }
+.benefit { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px 30px; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
+.benefit:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.ico { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 18px; }
+.ico svg { width: 27px; height: 27px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.benefit h3 { font-size: 18px; line-height: 1.25; margin-bottom: 8px; }
+.benefit p { color: var(--muted); font-size: 15.5px; }
+
+/* Prova visual em abas */
+.tabs { display: none; justify-content: center; margin-top: clamp(28px, 4vw, 44px); }
+.js .tabs { display: flex; }
+.tablist { display: inline-flex; gap: 6px; padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; max-width: 100%; overflow-x: auto; }
+.tab { appearance: none; border: 0; background: transparent; color: var(--muted); font: 600 14px/1 var(--display); padding: 14px 22px; border-radius: 999px; cursor: pointer; white-space: nowrap; transition: background .2s, color .2s; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+.panels { display: grid; gap: clamp(44px, 6vw, 72px); margin-top: clamp(28px, 4vw, 40px); }
+.panel[hidden] { display: none; }
+.panel { display: grid; gap: 18px; min-width: 0; }
+.js .panel:not([hidden]) { animation: fade .45s ease; }
+.panel h3 { font-size: clamp(20px, 2.2vw, 25px); line-height: 1.25; text-align: center; margin-left: auto; margin-right: auto; }
+.shots { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; width: 100%; max-width: 1000px; margin: 0 auto; }
+.shot { margin: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: 0 18px 36px -26px rgba(8,50,58,.45); min-width: 0; }
+.shot-bar { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.shot-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+.zoom { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; font: inherit; color: inherit; text-align: left; }
+.zoom img { width: 100%; height: auto; }
+.zoom::after { content: "ampliar"; position: absolute; right: 12px; bottom: 12px; font: 400 17px/1 var(--hand); color: #FFFFFF; background: rgba(10,77,87,.94); padding: 7px 15px 9px; border-radius: 999px; opacity: 0; transform: translateY(4px); transition: opacity .2s, transform .2s; }
+.zoom:hover::after, .zoom:focus-visible::after { opacity: 1; transform: none; }
+@media (hover: none) { .zoom::after { opacity: 1; transform: none; } }
+.proof-end { text-align: center; font: 400 clamp(26px, 3.4vw, 36px)/1.25 var(--hand); color: var(--accent); margin-top: clamp(40px, 5vw, 64px); text-wrap: balance; }
+
+/* Como funciona */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 28px; margin-top: clamp(32px, 4vw, 52px); counter-reset: s; }
+.steps li { position: relative; counter-increment: s; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px 28px; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
+.steps li:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.steps li::before { content: counter(s); display: block; font: 400 56px/1 var(--hand); color: var(--warm); margin-bottom: 10px; }
+.steps h3 { font-size: 19px; line-height: 1.25; margin-bottom: 10px; }
+.steps p { color: var(--muted); font-size: 16px; }
+@media (min-width: 960px) { .steps li:not(:last-child)::after { content: ""; position: absolute; top: 46px; left: 100%; width: 28px; border-top: 2px dashed var(--sand); } }
+.cta-row { display: flex; justify-content: center; margin-top: clamp(32px, 4vw, 48px); }
+
+/* Pra quem é */
+.aud { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 20px; margin-top: clamp(32px, 4vw, 52px); }
+.aud li { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: clamp(26px, 3vw, 38px) clamp(22px, 2.6vw, 32px); min-width: 0; text-align: center; transition: transform .25s ease, box-shadow .25s ease; }
+.aud li:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.aud h3 { font-size: 22px; line-height: 1.2; margin-bottom: 14px; }
+.aud p { color: var(--muted); font-size: 16px; }
+
+/* Bônus */
+.bonus { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; margin-top: clamp(32px, 4vw, 52px); }
+.bonus li { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; min-width: 0; transition: transform .25s ease, box-shadow .25s ease; }
+.bonus li:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.bonus .eyebrow { margin-bottom: 8px; }
+.bonus h3 { font-size: 19px; line-height: 1.25; margin-bottom: 10px; }
+.bonus p { color: var(--muted); font-size: 16px; }
+.bonus-feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: clamp(32px, 4vw, 52px);
+  background: var(--grad); color: var(--on-hero); border-radius: 28px; padding: clamp(22px, 4vw, 52px); box-shadow: var(--shadow); }
+.bonus-feature > * { min-width: 0; }
+.bonus-feature .eyebrow { color: var(--btn-light-bg); }
+.bonus-feature h3 { font-size: clamp(24px, 3vw, 34px); line-height: 1.15; font-weight: 800; margin-bottom: 14px; }
+.bonus-feature p { color: var(--on-hero-soft); }
+.bf-list { display: grid; gap: 10px; margin-top: 22px; }
+.bf-list li { display: flex; gap: 12px; align-items: flex-start; font-weight: 500; }
+.bf-list li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--btn-light-bg); margin-top: .62em; }
+.frame { background: #FFFFFF; border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px -24px rgba(0,0,0,.6); margin: 0; }
+.frame-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #EFEDE6; border-bottom: 1px solid #DDD7C8; }
+.frame-bar i { width: 10px; height: 10px; border-radius: 50%; background: #CFC9B8; }
+.bonus-feature + .bonus { margin-top: 20px; }
+@media (max-width: 860px) { .bonus-feature { grid-template-columns: minmax(0, 1fr); } }
+
+/* Preço */
+.price-card { max-width: 580px; margin: clamp(28px, 4vw, 44px) auto 0; background: var(--surface); border: 2px solid var(--accent); border-radius: 26px; padding: clamp(28px, 5vw, 48px) clamp(22px, 4vw, 44px); box-shadow: var(--shadow); text-align: center; }
+.price-card h2 { font-size: clamp(24px, 3vw, 31px); }
+.checks { display: grid; gap: 12px; text-align: left; margin: 26px auto 0; max-width: 380px; }
+.checks li { display: flex; gap: 12px; align-items: flex-start; }
+.checks svg { flex: none; width: 22px; height: 22px; margin-top: 2px; color: var(--accent); }
+.price { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--line); }
+.price-main { font: 800 clamp(36px, 7vw, 54px)/1.05 var(--display); color: var(--accent); }
+.price-main small { font: 400 .62em/1 var(--hand); letter-spacing: 0; margin-right: 8px; }
+.price-alt { margin-top: 8px; color: var(--muted); font-size: 18px; }
+.price-card .btn { margin-top: 26px; }
+.seals { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 20px; font: 600 11px/1.3 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.seals li { display: flex; align-items: center; gap: 8px; }
+.seals svg { width: 16px; height: 16px; color: var(--accent); }
+
+/* Quem criou */
+.bio { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.bio-photo { background: var(--sand); border-radius: 26px; overflow: hidden; max-width: 480px; width: 100%; justify-self: center; box-shadow: var(--shadow); }
+.bio-photo img { width: 100%; height: auto; }
+.bio-text { display: grid; gap: 18px; min-width: 0; }
+.bio-text p { color: var(--muted); max-width: 56ch; }
+.bio-text p:first-of-type { color: var(--ink); font-size: 19px; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 6px; }
+.fact { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px 12px; text-align: center; }
+.fact b { display: block; font: 800 clamp(24px, 3vw, 32px)/1 var(--display); color: var(--accent); }
+.fact--badge { display: flex; flex-direction: column; align-items: center; justify-content: center; padding-block: 12px; }
+.fact--badge img { height: 76px; width: auto; }
+.fact--badge span { margin-top: 6px; }
+.fact span { display: block; margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.3; }
+
+/* FAQ */
+.faq { max-width: 780px; margin: clamp(28px, 4vw, 44px) auto 0; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 4px; font: 600 18px/1.35 var(--display); transition: color .2s; }
+.faq summary:hover { color: var(--accent); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; font: 400 28px/1 var(--display); color: var(--accent); transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details[open] p { animation: fade .35s ease; }
+.faq details p { padding: 0 4px 24px; color: var(--muted); max-width: 62ch; }
+
+/* Fechamento */
+.close { position: relative; overflow: hidden; background: var(--grad); color: var(--on-hero); text-align: center; }
+.close::before { content: ""; position: absolute; width: 460px; height: 460px; right: -160px; top: -160px; border-radius: 50%; background: #F4B448; opacity: .18; filter: blur(70px); animation: drift 14s ease-in-out infinite alternate; pointer-events: none; }
+.close .wrap { position: relative; }
+.section.close > .wrap > .eyebrow { color: var(--btn-light-bg); }
+.close .h2 { color: var(--on-hero); font-weight: 800; max-width: 20ch; }
+.close .sub { margin: 18px auto 0; max-width: 40ch; color: var(--on-hero-soft); font-size: 18px; }
+.close .cta-row { margin-top: 32px; }
+.close .teaser { margin-top: 16px; }
+
+footer { padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+/* Ampliar imagem */
+.lb { position: fixed; inset: 0; z-index: 60; background: rgba(7,22,25,.92); overflow: auto; cursor: zoom-out;
+  padding: calc(64px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 32px max(16px, env(safe-area-inset-left, 0px)); display: flex; justify-content: center; align-items: flex-start; }
+.lb img { width: min(1500px, 100%); height: auto; border-radius: 10px; background: #FFFFFF; }
+.lb-x { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); width: 44px; height: 44px; border-radius: 50%; border: 0; background: #FFFFFF; color: #16282B; font: 400 28px/1 var(--display); cursor: pointer; }
+
+/* Barra fixa no celular */
+.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: none; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--surface); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform .25s ease; }
+.sticky.on { transform: none; }
+.sticky span { font: 600 14px/1.2 var(--display); }
+.sticky b { display: block; font-size: 19px; font-weight: 800; color: var(--accent); }
+.sticky .btn { min-height: 48px; padding: 0 22px; font-size: 13px; }
+
+@media (max-width: 560px) {
+  .benefit { display: grid; grid-template-columns: 54px minmax(0, 1fr); column-gap: 16px; align-items: start; padding: 20px 18px; }
+  .benefit .ico { grid-row: span 2; margin: 0; }
+  .benefit h3 { margin-bottom: 4px; }
+}
+@media (max-width: 760px) {
+  .bio { grid-template-columns: minmax(0, 1fr); }
+  .bio-photo { max-width: 360px; }
+  .sticky { display: flex; }
+  footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .hl path { stroke-dashoffset: 0; }
+  .js .reveal { opacity: 1; }
+  .ticker { white-space: normal; justify-content: center; }
+  .ticker ul + ul { display: none; }
+  .ticker ul { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav" aria-label="Seções da página" inert>
+  <div class="wrap nav-in">
+    <a class="mark" href="#topo">TEU</a>
+    <ul>
+      <li><a class="link" href="#leva">O que você leva</a></li>
+      <li><a class="link" href="#prova">Por dentro</a></li>
+      <li><a class="link" href="#como-funciona">Como funciona</a></li>
+      <li><a class="link" href="#bonus">Bônus</a></li>
+      <li><a class="link" href="#duvidas">Dúvidas</a></li>
+    </ul>
+    <a class="btn" data-cta href="#oferta">Quero acessar</a>
+  </div>
+</nav>
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <div class="topbar" style="--i:0"><span class="mark">TEU</span><span class="mark-sub">tudo em um</span></div>
+    <p class="eyebrow" style="--i:1">O sistema de gestão de clientes da prestadora de serviço</p>
+    <h1 style="--i:2">Transforme a entrega do seu serviço em uma experiência <span class="hl">5 estrelas<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3 13 C 45 3, 95 19, 150 9 S 250 15, 297 5"/></svg></span></h1>
+    <p class="lead" style="--i:3">Organize clientes, reuniões, entregas, prazos e tarefas em um único painel profissional.</p>
+    <div class="cta-block" style="--i:4">
+      <a class="btn btn--light btn--pulse" id="heroCta" data-cta href="#oferta">Quero acessar</a>
+      <p class="teaser"><b>12x de R$ 10,03</b> ou R$ 97 à vista</p>
+    </div>
+    <ul class="strip" style="--i:5">
+      <li>Acesso imediato</li>
+      <li>Template personalizável</li>
+      <li><strong>Incluso página do cliente</strong></li>
+      <li>Tutoriais gravados</li>
+    </ul>
+    <p class="peek" style="--i:6" aria-hidden="true"><span>dá uma olhada por dentro</span>
+      <svg viewBox="0 0 44 52"><path d="M8 4 C 38 8, 40 30, 24 46"/><path d="M14 40 L24 47 L31 36"/></svg></p>
+  </div>
+</header>
+
+<div class="wrap stage-wrap">
+  <div class="stage">
+    <img src="img/mockup.webp" width="1920" height="1080" alt="O sistema Tudo em Um aberto no computador, notebook, tablet e celular, com painel de entregas, onboarding e página do cliente">
+  </div>
+</div>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <ul><li>Acesso imediato</li><li>Template personalizável</li><li>Incluso página do cliente</li><li>Tutoriais gravados</li><li>3 bônus</li></ul>
+    <ul><li>Acesso imediato</li><li>Template personalizável</li><li>Incluso página do cliente</li><li>Tutoriais gravados</li><li>3 bônus</li></ul>
+  </div>
+</div>
+
+<main>
+  <!-- O que você leva -->
+  <section class="section" id="leva">
+    <div class="wrap">
+      <p class="eyebrow reveal">O que você leva</p>
+      <h2 class="h2 reveal">Tudo para atender seus clientes com mais profissionalismo</h2>
+      <ul class="benefits" data-stagger>
+        <li class="benefit reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8 12.5 2.8 2.8L16 9.5"/></svg></div>
+          <h3>Tarefas num lugar só</h3>
+          <p>Veja as entregas de hoje e da semana, com prioridade e status de cada tarefa.</p>
+        </li>
+        <li class="benefit reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2 .7 3.2 2.4 3.5 5.2"/></svg></div>
+          <h3>Gestão de clientes</h3>
+          <p>Onboarding, reuniões e acompanhamento de cada cliente, tudo organizado.</p>
+        </li>
+        <li class="benefit reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M9 9v11"/></svg></div>
+          <h3>Página do cliente</h3>
+          <p>Uma área personalizada para compartilhar solicitações e entregas com o seu cliente.</p>
+        </li>
+        <li class="benefit reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10.2 8.8 5 3.2-5 3.2z"/></svg></div>
+          <h3>Tutoriais gravados</h3>
+          <p>Vídeos simples, passo a passo, para usar cada parte do sistema no dia a dia.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Dobra 2: prova visual -->
+  <section class="section section--alt" id="prova">
+    <div class="wrap">
+      <p class="eyebrow reveal">Por dentro do sistema</p>
+      <h2 class="h2 reveal">Um sistema que vai deixar sua entrega muito mais profissional</h2>
+
+      <div class="tabs reveal"><div class="tablist" role="tablist" aria-label="Partes do sistema">
+        <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button">Tarefas</button>
+        <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button">Gestão de clientes</button>
+        <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button">Área do cliente</button>
+      </div></div>
+
+      <div class="panels">
+        <div class="panel" id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+          <h3>Tarefas centralizadas em um único lugar</h3>
+          <div class="shots">
+            <figure class="shot"><div class="shot-bar"><i></i><i></i><i></i></div>
+              <button class="zoom" type="button" aria-label="Ampliar imagem"><img src="img/print-tarefas.webp" width="1600" height="553" alt="Painel com entregas para hoje e calendário de entregas da semana, com prioridade e status de cada tarefa" loading="lazy"></button></figure>
+          </div>
+        </div>
+        <div class="panel" id="panel-2" role="tabpanel" aria-labelledby="tab-2">
+          <h3>Processos e gestão de clientes</h3>
+          <div class="shots">
+            <figure class="shot"><div class="shot-bar"><i></i><i></i><i></i></div>
+              <button class="zoom" type="button" aria-label="Ampliar imagem"><img src="img/print-onboarding.webp" width="1600" height="849" alt="Checklist de onboarding com status de cada etapa, registro de reuniões e a página da etapa Confirmar contratação" loading="lazy"></button></figure>
+          </div>
+        </div>
+        <div class="panel" id="panel-3" role="tabpanel" aria-labelledby="tab-3">
+          <h3>Área do cliente personalizada</h3>
+          <div class="shots">
+            <figure class="shot"><div class="shot-bar"><i></i><i></i><i></i></div>
+              <button class="zoom" type="button" aria-label="Ampliar imagem"><img src="img/print-area-cliente.webp" width="1600" height="794" alt="Página de acompanhamento do projeto compartilhada com o cliente, com informações essenciais e acesso rápido" loading="lazy"></button></figure>
+            <figure class="shot"><div class="shot-bar"><i></i><i></i><i></i></div>
+              <button class="zoom" type="button" aria-label="Ampliar imagem"><img src="img/print-solicitacoes.webp" width="1600" height="643" alt="Área do cliente com novas solicitações e entregas do projeto por status" loading="lazy"></button></figure>
+          </div>
+        </div>
+      </div>
+      <p class="proof-end reveal">Além de te poupar tempo e facilitar seu trabalho</p>
+    </div>
+  </section>
+
+  <!-- Dobra 3: como funciona -->
+  <section class="section" id="como-funciona">
+    <div class="wrap">
+      <p class="eyebrow reveal">Como funciona</p>
+      <h2 class="h2 reveal">Simples assim</h2>
+      <ol class="steps" data-stagger>
+        <li class="reveal"><h3>Acesse a área de membros</h3><p>Assim que sua compra for aprovada, você já recebe acesso ao curso pela Kiwify direto no seu e-mail.</p></li>
+        <li class="reveal"><h3>Duplique o sistema</h3><p>Com poucos cliques, você copia o Tudo em Um para sua conta do Notion e adiciona seus clientes.</p></li>
+        <li class="reveal"><h3>Assista aos tutoriais</h3><p>Aprenda a usar cada parte do sistema com vídeos simples e explicações passo a passo.</p></li>
+        <li class="reveal"><h3>Comece a organizar seus clientes</h3><p>Organize seus clientes, acompanhe as tarefas, reuniões, prazos e entregas. Tudo em um só lugar!</p></li>
+      </ol>
+      <div class="cta-row reveal"><a class="btn btn--pulse" data-cta href="#oferta">Quero acessar</a></div>
+    </div>
+  </section>
+
+  <!-- Dobra 4: pra quem é -->
+  <section class="section section--alt" id="para-quem">
+    <div class="wrap">
+      <p class="eyebrow reveal">Para quem é</p>
+      <h2 class="h2 reveal">Feito para quem atende clientes e quer entregar com mais controle</h2>
+      <ul class="aud" data-stagger>
+        <li class="reveal"><h3>Prestadoras de serviço</h3><p>Que querem entregar um serviço cada vez mais profissional, aumentar a percepção de valor do seu trabalho e ter mais controle sobre prazos e entregas, sem viver atoladas em demandas.</p></li>
+        <li class="reveal"><h3>Mentoras</h3><p>Que querem acompanhar melhor suas mentoradas, gerar mais resultados e manter a qualidade do acompanhamento mesmo com o crescimento do número de alunas.</p></li>
+        <li class="reveal"><h3>Consultoras</h3><p>Que atendem vários clientes ao mesmo tempo e querem manter a qualidade das entregas, ter mais controle dos projetos e aumentar o valor dos seus serviços sem precisar trabalhar cada vez mais.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Dobra 5: bônus -->
+  <section class="section" id="bonus">
+    <div class="wrap">
+      <p class="eyebrow reveal">Bônus</p>
+      <h2 class="h2 reveal">E você ainda leva 3 bônus</h2>
+      <div class="bonus-feature reveal">
+        <div>
+          <p class="eyebrow">Bônus 1</p>
+          <h3>Financeiro: controle de pagamentos dos clientes</h3>
+          <p>Tenha mais controle sobre o dinheiro que entra, acompanhe parcelas e pagamentos dos seus clientes e evite perder dinheiro por falta de organização.</p>
+          <ul class="bf-list">
+            <li>Faturamento mensal em gráfico</li>
+            <li>Controle de pagamentos dos clientes</li>
+            <li>Custos do negócio</li>
+            <li>Metas</li>
+          </ul>
+        </div>
+        <figure class="frame">
+          <div class="frame-bar"><i></i><i></i><i></i></div>
+          <button class="zoom" type="button" aria-label="Ampliar imagem"><img src="img/financeiro.webp" width="1600" height="757" alt="Painel Financeiro no Notion com menu de navegação (Metas, Custos do negócio, Faturamento, Controle de Pagamentos) e gráfico de faturamento mensal" loading="lazy"></button>
+        </figure>
+      </div>
+      <ul class="bonus" data-stagger>
+        <li class="reveal"><p class="eyebrow">Bônus 2</p><h3>Como criar capas personalizadas no Canva + modelo</h3><p>Aprenda a criar capas bonitas e personalizadas para deixar seu Tudo em Um com a identidade visual do seu negócio. Você também recebe um modelo para facilitar a criação.</p></li>
+        <li class="reveal"><p class="eyebrow">Bônus 3</p><h3>Como criar ícones personalizados para seu Notion</h3><p>Aprenda a criar ícones exclusivos para personalizar seu Notion e deixar seu sistema com a sua cara.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Dobra 6: preço -->
+  <section class="section section--alt" id="oferta">
+    <div class="wrap">
+      <div class="price-card reveal" id="priceCard">
+        <p class="eyebrow">Tudo em Um</p>
+        <h2>Investimento para ter acesso</h2>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/></svg><span>Template no Notion com processos completos</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/></svg><span>Tutoriais passo a passo</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/></svg><span>3 bônus</span></li>
+        </ul>
+        <div class="price">
+          <div class="price-main"><small>12x de</small>R$ 10,03</div>
+          <p class="price-alt">ou R$ 97 à vista</p>
+        </div>
+        <a class="btn btn--block btn--pulse" data-cta href="#oferta">Quero acessar</a>
+        <ul class="seals">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Compra segura</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Acesso imediato</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dobra 7: quem criou -->
+  <section class="section" id="quem-criou">
+    <div class="wrap">
+      <div class="bio">
+        <div class="bio-photo reveal">
+          <img src="img/joy.jpg" width="1000" height="1250" alt="Joy sorrindo, de camiseta marrom, com a mão no cabelo" loading="lazy">
+        </div>
+        <div class="bio-text reveal" style="--d:120ms">
+          <p class="eyebrow" style="margin:0">Quem criou o TEU</p>
+          <p>Eu sou Joy, estrategista de negócios digitais, especialista em organização e gestão de processos, e certificada pelo Notion.</p>
+          <p>Sou professora por formação, mestre em Engenharia Civil e Ambiental e atuei por 10 anos na educação. Em 2019, levei minha experiência para o mercado digital, onde trabalhei com estratégia, coprodução e gestão de projetos.</p>
+          <p>Hoje, ajudo empreendedoras e prestadoras de serviço a organizarem seus negócios, estruturarem processos e terem mais controle sobre suas operações, sem precisar carregar tudo na cabeça.</p>
+          <ul class="facts">
+            <li class="fact"><b>10</b><span>anos na educação</span></li>
+            <li class="fact"><b>6</b><span>anos organizando negócios no mercado digital</span></li>
+            <li class="fact fact--badge"><img src="img/notion-badge.png" width="89" height="153" alt="Emblema Notion Academy Workflows" loading="lazy"><span>certificada pelo Notion</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (rascunho: o banco de FAQ do Notion está vazio) -->
+  <section class="section section--alt" id="duvidas">
+    <div class="wrap">
+      <p class="eyebrow reveal">Dúvidas</p>
+      <h2 class="h2 reveal">Perguntas frequentes</h2>
+      <div class="faq reveal">
+        <details><summary>Como recebo o acesso?</summary><p>Assim que a compra for aprovada, você recebe o acesso ao curso pela Kiwify direto no seu e-mail. De lá, você acessa a área de membros com o sistema e os tutoriais.</p></details>
+        <details><summary>Como coloco o sistema no meu Notion?</summary><p>Com poucos cliques você duplica o Tudo em Um para a sua conta do Notion e já começa a cadastrar seus clientes.</p></details>
+        <details><summary>Preciso saber usar o Notion?</summary><p>Os tutoriais gravados ensinam cada parte do sistema com vídeos simples e explicações passo a passo, para você usar no dia a dia.</p></details>
+        <details><summary>Consigo deixar com a identidade visual do meu negócio?</summary><p>Sim. Você recebe dois bônus para isso: como criar capas personalizadas no Canva (com modelo) e como criar ícones personalizados para o seu Notion.</p></details>
+        <details><summary>Esse sistema serve para o meu tipo de trabalho?</summary><p>Ele foi pensado para prestadoras de serviço, mentoras e consultoras que atendem clientes e querem mais controle sobre prazos, reuniões, tarefas e entregas.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Último CTA -->
+  <section class="section close" id="fechamento">
+    <div class="wrap">
+      <p class="eyebrow">Chegou a hora</p>
+      <h2 class="h2">Tenha todos os seus clientes em um único painel profissional</h2>
+      <p class="sub">Template no Notion, tutoriais passo a passo e 3 bônus.</p>
+      <div class="cta-row"><a class="btn btn--light btn--pulse" data-cta href="#oferta">Quero acessar</a></div>
+      <p class="teaser"><b>12x de R$ 10,03</b> ou R$ 97 à vista</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Joy · Tudo em Um</div>
+</footer>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <span>Tudo em Um<b>R$ 97 à vista</b></span>
+  <a class="btn" data-cta href="#oferta" tabindex="-1">Quero acessar</a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada" hidden>
+  <button class="lb-x" type="button" aria-label="Fechar">&times;</button>
+  <img src="" alt="">
+</div>
+
+<script>
+  document.documentElement.classList.add("js");
+
+  // Link de checkout da Kiwify. Se ficar vazio, os botões levam à seção de preço.
+  var CHECKOUT_URL = "https://pay.kiwify.com.br/tTLGvYn";
+  document.querySelectorAll("[data-cta]").forEach(function (a) {
+    if (CHECKOUT_URL) { a.href = CHECKOUT_URL; a.target = "_blank"; a.rel = "noopener"; }
+  });
+
+  // Entrada suave das seções ao rolar
+  (function () {
+    var items = [].slice.call(document.querySelectorAll(".reveal"));
+    document.querySelectorAll("[data-stagger]").forEach(function (g) {
+      [].slice.call(g.querySelectorAll(":scope > .reveal")).forEach(function (el, i) { el.style.setProperty("--d", (i * 90) + "ms"); });
+    });
+    if (!("IntersectionObserver" in window)) { items.forEach(function (el) { el.classList.add("in"); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Menu fixo, barra de progresso e seção ativa
+  (function () {
+    var nav = document.getElementById("nav"), bar = document.getElementById("bar"), hero = document.querySelector(".hero");
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var y = window.scrollY || 0, h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.setProperty("--p", h > 0 ? Math.min(1, y / h) : 0);
+      var on = y > hero.offsetHeight * 0.7;
+      nav.classList.toggle("on", on);
+      nav.inert = !on;
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+    if (!("IntersectionObserver" in window)) return;
+    var links = {};
+    [].slice.call(nav.querySelectorAll(".link")).forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) {
+          Object.keys(links).forEach(function (k) { links[k].classList.toggle("act", k === e.target.id); });
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) spy.observe(s); });
+  })();
+
+  // Abas dos prints
+  (function () {
+    var tabs = [].slice.call(document.querySelectorAll(".tab")), panels = [].slice.call(document.querySelectorAll(".panel"));
+    if (!tabs.length) return;
+    function show(i, focus) {
+      tabs.forEach(function (t, k) {
+        var on = k === i;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        panels[k].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { show(i); });
+      t.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { e.preventDefault(); show((i + 1) % tabs.length, true); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); show((i - 1 + tabs.length) % tabs.length, true); }
+      });
+    });
+    show(0);
+  })();
+
+  // Ampliar imagem
+  (function () {
+    var lb = document.getElementById("lb"), img = lb.querySelector("img"), last = null;
+    function close() { lb.hidden = true; document.documentElement.style.overflow = ""; if (last) last.focus(); }
+    document.querySelectorAll(".zoom").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var im = b.querySelector("img");
+        img.src = im.currentSrc || im.src; img.alt = im.alt; last = b;
+        lb.hidden = false; document.documentElement.style.overflow = "hidden";
+        lb.querySelector(".lb-x").focus();
+      });
+    });
+    lb.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !lb.hidden) close(); });
+  })();
+
+  // Barra fixa no celular: aparece depois do primeiro botão e some quando o preço está na tela.
+  (function () {
+    var bar = document.getElementById("sticky");
+    var hero = document.getElementById("heroCta");
+    var price = document.getElementById("priceCard");
+    if (!bar || !hero || !price || !("IntersectionObserver" in window)) return;
+    var heroOut = false, priceIn = false;
+    function update() {
+      var on = heroOut && !priceIn;
+      bar.classList.toggle("on", on);
+      bar.setAttribute("aria-hidden", on ? "false" : "true");
+      bar.querySelector("a").tabIndex = on ? 0 : -1;
+    }
+    new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; update(); }).observe(hero);
+    new IntersectionObserver(function (e) { priceIn = e[0].isIntersecting; update(); }).observe(price);
+  })();
+</script>
+</body>
+</html>
