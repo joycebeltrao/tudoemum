@@ -125,7 +125,7 @@ section[id] { scroll-margin-top: 72px; }
 .progress i { display: block; height: 100%; background: var(--btn-bg); transform-origin: left; transform: scaleX(var(--p, 0)); }
 
 /* Hero */
-.hero { position: relative; overflow: hidden; background: var(--grad); color: var(--on-hero); padding-top: 22px; padding-bottom: clamp(150px, 19vw, 250px); }
+.hero { position: relative; overflow: hidden; background: var(--grad); color: var(--on-hero); padding-top: 22px; padding-bottom: clamp(120px, 15vw, 200px); }
 .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; animation: drift 14s ease-in-out infinite alternate; }
 .hero::before { width: 420px; height: 420px; left: -140px; top: -120px; background: #F4B448; opacity: .2; }
 .hero::after { width: 540px; height: 540px; right: -180px; bottom: -80px; background: #5FD0D8; opacity: .28; animation-delay: -6s; }
@@ -150,6 +150,7 @@ section[id] { scroll-margin-top: 72px; }
 .peek { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 26px; font: 400 clamp(20px, 2.2vw, 24px)/1 var(--hand); color: var(--btn-light-bg); }
 .peek svg { width: 44px; height: 52px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 
+.hero-cta { display: flex; justify-content: center; margin-top: clamp(32px, 4vw, 44px); }
 .stage-wrap { margin-top: calc(-1 * clamp(84px, 11vw, 150px)); position: relative; }
 .stage { background: var(--stage); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden; animation: float 7s ease-in-out infinite alternate; }
 .stage img { width: 100%; height: auto; aspect-ratio: 16 / 9; }
@@ -341,21 +342,8 @@ footer { padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); bord
 <header class="hero" id="topo">
   <div class="wrap">
     <div class="topbar" style="--i:0"><span class="mark">TEU</span><span class="mark-sub">tudo em um</span></div>
-    <p class="eyebrow" style="--i:1">O sistema de gestão de clientes da prestadora de serviço</p>
-    <h1 style="--i:2">Transforme a entrega do seu serviço em uma experiência <span class="hl">5 estrelas<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3 13 C 45 3, 95 19, 150 9 S 250 15, 297 5"/></svg></span></h1>
-    <p class="lead" style="--i:3">Organize clientes, reuniões, entregas, prazos e tarefas em um único painel profissional.</p>
-    <div class="cta-block" style="--i:4">
-      <a class="btn btn--light btn--pulse" id="heroCta" data-cta href="#oferta">Quero acessar</a>
-      <p class="teaser"><b>12x de R$ 10,03</b> ou R$ 97 à vista</p>
-    </div>
-    <ul class="strip" style="--i:5">
-      <li>Acesso imediato</li>
-      <li>Template personalizável</li>
-      <li><strong>Incluso página do cliente</strong></li>
-      <li>Tutoriais gravados</li>
-    </ul>
-    <p class="peek" style="--i:6" aria-hidden="true"><span>dá uma olhada por dentro</span>
-      <svg viewBox="0 0 44 52"><path d="M8 4 C 38 8, 40 30, 24 46"/><path d="M14 40 L24 47 L31 36"/></svg></p>
+    <h1 style="--i:1">Transforme a entrega do seu serviço em uma experiência <span class="hl">5 estrelas<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3 13 C 45 3, 95 19, 150 9 S 250 15, 297 5"/></svg></span></h1>
+    <p class="lead" style="--i:2">Organize clientes, reuniões, entregas, prazos e tarefas em um único painel profissional.</p>
   </div>
 </header>
 
@@ -363,6 +351,10 @@ footer { padding-block: 40px calc(40px + env(safe-area-inset-bottom, 0px)); bord
   <div class="stage">
     <img src="img/mockup.webp" width="1920" height="1080" alt="O sistema Tudo em Um aberto no computador, notebook, tablet e celular, com painel de entregas, onboarding e página do cliente">
   </div>
+</div>
+
+<div class="wrap hero-cta">
+  <a class="btn btn--pulse" id="heroCta" data-cta href="#oferta">Quero acessar</a>
 </div>
 
 <div class="ticker-wrap" aria-hidden="true">
